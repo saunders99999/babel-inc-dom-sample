@@ -1,0 +1,17 @@
+{
+    "plugins": [
+        [
+        "transform-incremental-dom",
+        {
+            "requireStaticsKey": true,
+            "moduleSource": "incremental-dom"
+        }
+        ]
+    ],
+    "presets": [
+        ["@babel/preset-env", {
+        "useBuiltIns": "usage",
+        "corejs": 3
+        }]
+    ]
+}

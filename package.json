@@ -1,0 +1,29 @@
+{
+  "name": "babel-inc-dom-sample",
+  "version": "0.1.0",
+  "description": "babel 7 incremental dom sample",
+  "main": "src/index.jsx",
+  "scripts": {
+    "build": "babel ./src/index.jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saunders99999/babel-inc-dom-sample.git"
+  },
+  "author": "Mark Saunders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saunders99999/babel-inc-dom-sample/issues"
+  },
+  "homepage": "https://github.com/saunders99999/babel-inc-dom-sample#readme",
+  "dependencies": {
+    "incremental-dom": "0.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.6.2",
+    "@babel/core": "7.6.2",
+    "@babel/preset-env": "7.6.2",
+    "babel-plugin-transform-incremental-dom": "4.2.1"
+  }
+}
