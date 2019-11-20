@@ -1,12 +1,18 @@
 export default function render(data) {
-    var header = data.conditional ? <div /> : null;
-    var collection = data.items.map((item) => {
-        return <li key={item.id} class={item.className}>{item.name}</li>;
-    });
+    // const header = data.conditional ? <div /> : null;
+    // const collection = data.items.map((item) => {
+    //     return <li key={item.id} class={item.className}>{item.name}</li>;
+    // });
+
+    const myClass = 'fred';
+
+    const myArray = [];
+    myArray.push(<span>my span</span>);
  
-    return <div id="container">
-        {header}
-        <ul>{collection}</ul>
-        <p {...data.props}>Some features</p>
+    return 
+    <div id="container"
+    class={ `${myClass}`}
+    >
+        {myArray}
     </div>;
 }
