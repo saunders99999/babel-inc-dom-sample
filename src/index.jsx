@@ -1,18 +1,34 @@
-export default function render(data) {
-    // const header = data.conditional ? <div /> : null;
-    // const collection = data.items.map((item) => {
-    //     return <li key={item.id} class={item.className}>{item.name}</li>;
-    // });
+export function renderDoesNotWork(el) {
+    const elemBody = <span class="fred" />;
+    return (
+        // transpile bad --> (0, _incrementalDom.elementOpen)("div", null, null, "id", `${el.id}-track`);
+        <div id={ `${ el.id }-track` }>
+            { elemBody }
+        </div>
+    );
+}
 
-    const myClass = 'fred';
+export function renderWorks(el) {
+    const elemBody = <span class="fred" />;
 
-    const myArray = [];
-    myArray.push(<span>my span</span>);
- 
-    return 
-    <div id="container"
-    class={ `${myClass}`}
-    >
-        {myArray}
-    </div>;
+    // transpile good --> var elid = "".concat(el.id, "-track");
+    const elid = `${ el.id }-track`;
+    return (
+        <div id={ elid }>
+            { elemBody }
+        </div>
+    );
+}
+
+export function optionalReturnDoesNotWork(colIndex,myClass) {
+    if (colIndex === 0) {
+        return (
+            // transpile good -> return (0, _incrementalDom.elementVoid)("th", null, null, "id", "class=".concat(myClass, "-fred1"));
+            <th id={ `class=${myClass}-fred1`} />
+        );
+    }
+    return (
+        // transpile bad --> (0, _incrementalDom.elementVoid)("th", null, null, "id", `class=${myClass}-fred2`);
+        <th id={ `class=${myClass}-fred2`} />
+    );
 }
