@@ -7,10 +7,10 @@ export function renderDoesNotWork(el) {
         </div>
     );
 }
-
-export function renderWorks(el) {
+  
+  export function renderWorks(el) {
     const elemBody = <span class="fred" />;
-
+  
     // transpile good --> var elid = "".concat(el.id, "-track");
     const elid = `${ el.id }-track`;
     return (
@@ -19,16 +19,16 @@ export function renderWorks(el) {
         </div>
     );
 }
-
-export function optionalReturnDoesNotWork(colIndex,myClass) {
+  
+  export function optionalReturnDoesNotWork(colIndex,idprefix) {
     if (colIndex === 0) {
         return (
-            // transpile good -> return (0, _incrementalDom.elementVoid)("th", null, null, "id", "class=".concat(myClass, "-fred1"));
-            <th id={ `class=${myClass}-fred1`} />
+            // transpile good -> return (0, _incrementalDom.elementVoid)("th", null, null, "id", "".concat(idprefix, "-fred1"));
+            <th id={ `${ idprefix }-fred1`} />
         );
     }
     return (
-        // transpile bad --> (0, _incrementalDom.elementVoid)("th", null, null, "id", `class=${myClass}-fred2`);
-        <th id={ `class=${myClass}-fred2`} />
+        // transpile bad --> return (0, _incrementalDom.elementVoid)("th", null, null, "id", `${idprefix}-fred2`);
+        <th id={ `${ idprefix }-fred2`} />
     );
 }
